@@ -1,19 +1,17 @@
 ﻿using System;
-using Asteroids.Framework.Entities;
-using Asteroids.Framework.Entities.Contracts;
-using Asteroids.ShootModule;
-using UnityEditor;
+using Asteroids.Framework.Entities.ContractsComponent;
+using Asteroids.Framework.Entities.ContractsEntity;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Asteroids.AShootRealization
+namespace Asteroids.Game.Entities.Bullet
 {
-	public class Bullet : IPoolable, IEntity, IProjectile
+	public class Bullet : IBullet
 	{
 		public event Predicate<IPoolable> onNeedToPool;
 		
 		public IMovable MoveComponent { get; }
-		public IEntityProvider Provider { get; }
+		//public IEntityProvider Provider { get; }
 		public bool IsAlive { get; private set; }
 		public GameObject GameObjectRef { get; set; }
 		
@@ -29,7 +27,7 @@ namespace Asteroids.AShootRealization
 		
 		public void RemoveFromPool()
 		{
-			throw new NotImplementedException();
+			
 		}
 		public void Init()
 		{
@@ -37,9 +35,7 @@ namespace Asteroids.AShootRealization
 		}
 		public void OnCollision()
 		{
-			onNeedToPool = null;
 			Object.Destroy(GameObjectRef);
-			throw new NotImplementedException();
 		}
 	}
 }

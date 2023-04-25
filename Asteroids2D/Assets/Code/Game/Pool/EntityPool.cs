@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using Asteroids.Framework.Entities;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using Asteroids.Framework.Entities.ContractsEntity;
 
-namespace Asteroids.AShootRealization
+namespace Asteroids.Framework.Pool
 {
-	 public class ObjectPool : IObjectPool
+	 public class EntityPool : IEntityPool
 	 {
 		private Stack<IPoolable> EntitiesPool;
 
 		private uint maxEntitiesInPool;
 		
-		public ObjectPool(uint maxEntitiesInPool)
+		public EntityPool(uint maxEntitiesInPool)
 		{
 			EntitiesPool = new Stack<IPoolable>();
 

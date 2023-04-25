@@ -1,4 +1,4 @@
-﻿using Asteroids.Framework.Entities.Contracts;
+﻿using Asteroids.Framework.Entities.ContractsComponent;
 using UnityEngine;
 
 namespace Asteroids.Framework.Entities.Components

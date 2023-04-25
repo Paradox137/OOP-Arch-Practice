@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
-using Asteroids.AShootRealization;
 using Asteroids.Framework.Entities;
 using Asteroids.Framework.Entities.Components;
-using Asteroids.Framework.Entities.Contracts;
+using Asteroids.Framework.Entities.ContractsComponent;
 using Asteroids.Framework.Input;
 using Asteroids.Framework.Input.Contracts;
 using Asteroids.Framework.Service.Contracts;

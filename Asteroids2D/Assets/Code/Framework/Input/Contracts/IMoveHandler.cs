@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using Asteroids.Framework.Entities.Contracts;
+using Asteroids.Framework.Entities.ContractsComponent;
 using UnityEngine.InputSystem;
 
 namespace Asteroids.Framework.Input.Contracts

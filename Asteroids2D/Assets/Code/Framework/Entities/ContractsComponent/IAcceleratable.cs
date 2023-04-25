@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Asteroids.Framework.Entities.Contracts
+﻿namespace Asteroids.Framework.Entities.ContractsComponent
 {
 	public interface IAcceleratable : IMovable
 	{

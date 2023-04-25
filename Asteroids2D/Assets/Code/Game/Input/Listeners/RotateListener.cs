@@ -1,4 +1,4 @@
-﻿using Asteroids.Framework.Entities.Contracts;
+﻿using Asteroids.Framework.Entities.ContractsComponent;
 using Asteroids.Framework.Input;
 using Asteroids.Framework.Input.Contracts;
 using Asteroids.Framework.Input.Listener;

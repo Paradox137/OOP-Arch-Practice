@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Asteroids.Framework.Entities.Contracts;
+using Asteroids.Framework.Entities.ContractsComponent;
 using Asteroids.Framework.Input.Contracts;
 using UnityEngine.InputSystem;
 

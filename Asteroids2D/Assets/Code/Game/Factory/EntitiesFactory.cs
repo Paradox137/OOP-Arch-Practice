@@ -1,21 +1,21 @@
-﻿using System;
-using Asteroids.AShootRealization;
-using Asteroids.Framework.Entities;
+﻿using Asteroids.Framework.Entities.ContractsEntity;
+using Asteroids.Framework.Pool;
+using Asteroids.Framework.Spawner;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Asteroids.Game.Services
+namespace Asteroids.Framework.Factory
 {
-	public class Spawner<S, E> 
+	public class EntitiesFactory<S, E> 
 		where E : IEntity, IPoolable, new()
-		where S : ISpawnable
+		where S : IEntitiesSpawner
 	{
-		private IObjectPool objectPool;
+		private IEntityPool objectPool;
 		private S spawnableInfo;
 
 		private uint counter;
 		
-		public Spawner(IObjectPool objectPool)
+		public EntitiesFactory(IEntityPool objectPool)
 		{
 			counter = 0;
 			this.objectPool = objectPool;

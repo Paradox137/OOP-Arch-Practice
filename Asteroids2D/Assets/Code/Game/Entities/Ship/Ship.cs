@@ -1,7 +1,6 @@
 ﻿using System;
-using Asteroids.AShootRealization;
 using Asteroids.Framework.Entities;
-using Asteroids.Framework.Entities.Contracts;
+using Asteroids.Framework.Entities.ContractsComponent;
 using UnityEngine;
 
 namespace Asteroids.Game.Entities.Ship

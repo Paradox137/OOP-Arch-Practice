@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Asteroids.Framework.Entities
+namespace Asteroids.Framework.Entities.ContractsEntity
 {
 	public interface IEntity
 	{

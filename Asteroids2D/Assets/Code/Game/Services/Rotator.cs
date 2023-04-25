@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using Asteroids.Framework.Entities.Contracts;
+using Asteroids.Framework.Entities.ContractsComponent;
 using Asteroids.Framework.Service;
 using Asteroids.Framework.Service.Contracts;
 using Cysharp.Threading.Tasks;
