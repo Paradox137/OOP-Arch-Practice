@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Asteroids.Framework.Entities.ContractsEntity;
 
-namespace Asteroids.Framework.Pool
+namespace Asteroids.Game.Pool
 {
 	 public class EntityPool : IEntityPool
 	 {

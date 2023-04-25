@@ -1,4 +1,4 @@
-﻿namespace Asteroids.Framework.Factory
+﻿namespace Asteroids.Game.Factory
 {
 	public interface IEntitiesFactory
 	{

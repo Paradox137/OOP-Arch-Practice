@@ -1,6 +1,6 @@
 ﻿using Asteroids.Framework.Entities.ContractsComponent;
 
-namespace Asteroids.Framework.Entities.ContractsEntity
+namespace Asteroids.Game.Entities.Contracts
 {
 	public interface IProjectile
 	{

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.Framework.Spawner
+namespace Asteroids.Game.Spawner
 {
 	public interface IEntitiesSpawner
 	{

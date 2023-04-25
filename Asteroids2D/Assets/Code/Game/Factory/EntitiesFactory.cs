@@ -1,10 +1,10 @@
 ﻿using Asteroids.Framework.Entities.ContractsEntity;
-using Asteroids.Framework.Pool;
-using Asteroids.Framework.Spawner;
+using Asteroids.Game.Pool;
+using Asteroids.Game.Spawner;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Asteroids.Framework.Factory
+namespace Asteroids.Game.Factory
 {
 	public class EntitiesFactory<S, E> 
 		where E : IEntity, IPoolable, new()
