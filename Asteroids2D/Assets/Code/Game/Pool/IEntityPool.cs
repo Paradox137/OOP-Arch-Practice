@@ -4,6 +4,8 @@ namespace Asteroids.Game.Pool
 {
 	public interface IEntityPool
 	{
-		public bool TryAddToPool(IPoolable entity);
+		public bool TryAddEntity(IPoolable entity);
+
+		public IPoolable TryGetEntity();
 	}
 }

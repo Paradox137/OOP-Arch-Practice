@@ -15,18 +15,18 @@ namespace Asteroids.Game.Pool
 
 			this.maxEntitiesInPool = maxEntitiesInPool;
 		}
-
-		// когда умрёт мы постараемчя добавить сюда
-		public bool TryAddToPool(IPoolable poolable)
+		
+		public bool TryAddEntity(IPoolable poolable)
 		{
 			if (EntitiesPool.Count < maxEntitiesInPool)
 			{
 				EntitiesPool.Push(poolable);
-				poolable.Deactivate();
 				return true;
 			}
 			
 			return false;
 		}
-	}
+		
+		public IPoolable TryGetEntity() => EntitiesPool.Count > 0 ? EntitiesPool.Pop() : null;
+	 }
 }
