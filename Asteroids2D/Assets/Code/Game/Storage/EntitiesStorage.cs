@@ -1,7 +1,27 @@
-﻿namespace Asteroids.Game.Storage
+﻿using System.Collections.Generic;
+using Asteroids.Framework.Entities.ContractsEntity;
+
+namespace Asteroids.Game.Storage
 {
-	public class EntitiesStorage
+	public class EntitiesStorage : IEntitiesStorage
 	{
+		private List<IEntity> activeEntities;
 		
+		public EntitiesStorage()
+		{
+			activeEntities = new List<IEntity>();
+		}
+
+		public void Add(IEntity entity)
+		{
+			activeEntities.Add(entity);
+		}
+		public void Remove(IEntity entity)
+		{
+			if (activeEntities.Contains(entity))
+			{
+				activeEntities.Remove(entity);
+			}
+		}
 	}
 }
