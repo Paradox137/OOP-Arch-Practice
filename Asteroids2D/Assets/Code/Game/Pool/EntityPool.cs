@@ -7,7 +7,7 @@ namespace Asteroids.Game.Pool
 	 {
 		private Stack<IPoolable> EntitiesPool;
 
-		private uint maxEntitiesInPool;
+		private readonly uint maxEntitiesInPool;
 		
 		public EntityPool(uint maxEntitiesInPool)
 		{

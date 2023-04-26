@@ -13,7 +13,7 @@ namespace Asteroids.Game.Factory
 	{
 		private IEntityPool entityPool;
 		private IEntitiesStorage entityStorage;
-		private S spawnableInfo;
+		private S spawner;
 
 		private uint counter;
 		
@@ -25,19 +25,33 @@ namespace Asteroids.Game.Factory
 			this.entityStorage = entityStorage;
 		}
 
-		public void SpawnEntity(GameObject gameObject) 
+		public void TrySpawnEntity(GameObject gameObject) 
 		{
+			if (spawner.isReady)
+			{
+				IPoolable poolEntity = entityPool.TryGetEntity();
+				
+				if (poolEntity != null)
+					poolEntity.Activate(spawner);
+				else
+				{
+					GameObject gameObjectRef = Object.Instantiate(gameObject, spawner.GetSpawnPosition(), spawner.GetRotation());
+					gameObjectRef.name = nameof(E) + " " + (++counter);
+
+					E entity = new E { GameObjectRef = gameObjectRef };
+					
+					SubscribeEntity(ref entity);
+					entity.Init();
+				}
+			}
 			
-			GameObject gameObjectRef = 
-				Object.Instantiate(gameObject, spawnableInfo.GetSpawnPosition(), spawnableInfo.GetRotation());
+		}
 
-			gameObjectRef.name = nameof(E) + " " + (++counter);
-
-			E entity = new E { GameObjectRef = gameObjectRef };
-
+		private void SubscribeEntity(ref E entity)
+		{
 			entity.onNeedToPool += entityPool.TryAddEntity;
-			
-			entity.Init();
+			entity.onActivate += entityStorage.Add;
+			entity.onDeactivate += entityStorage.Remove;
 		}
 	}
 }
