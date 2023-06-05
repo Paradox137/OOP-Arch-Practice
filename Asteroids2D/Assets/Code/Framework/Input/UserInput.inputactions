@@ -1,5 +1,5 @@
 {
-    "name": "Player Input",
+    "name": "UserInput",
     "maps": [
         {
             "name": "Player",
@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MainShoot",
+                    "name": "BulletShoot",
                     "type": "Button",
                     "id": "527ed6f3-c72b-4861-8f64-88b4dcba2e7f",
                     "expectedControlType": "Button",
@@ -94,7 +94,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
-                    "action": "MainShoot",
+                    "action": "BulletShoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

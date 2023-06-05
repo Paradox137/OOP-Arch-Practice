@@ -29,11 +29,11 @@ namespace Asteroids.Game.Services
 				await UniTask.NextFrame();
 			}
 		}
-		private static Quaternion NewQuaternion<T>(T rotatable, Vector3 vector3)
+		private static Quaternion NewQuaternion<T>(T rotatable, Vector3 direction)
 			where T : IRotatable
 		{
 			Quaternion quaternion = rotatable.CurrentRotation *
-				UnityEngine.Quaternion.Euler(vector3 * rotatable.RotationSpeed * Time.deltaTime);
+				UnityEngine.Quaternion.Euler(direction * rotatable.RotationSpeed * Time.deltaTime);
 			return quaternion;
 		}
 		public async void Rotate<T>(T rotatableObject, Vector3 direction, CancellationToken cancellationToken) 
@@ -41,7 +41,7 @@ namespace Asteroids.Game.Services
 		{
 			End += rotatableObject.ChangeRotation;
 
-			await RotateEveryFrame(rotatableObject, direction, cancellationToken);
+			//await RotateEveryFrame(rotatableObject, direction, cancellationToken);
 
 			End -= rotatableObject.ChangeRotation;
 		}

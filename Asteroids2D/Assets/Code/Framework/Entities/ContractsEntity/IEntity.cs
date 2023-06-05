@@ -8,6 +8,8 @@ namespace Asteroids.Framework.Entities.ContractsEntity
 		GameObject GameObjectRef { get; set; }
 		
 		void Init();
-		void OnCollision();
+		
+		// в провайдер
+		//void OnCollision();
 	}
 }

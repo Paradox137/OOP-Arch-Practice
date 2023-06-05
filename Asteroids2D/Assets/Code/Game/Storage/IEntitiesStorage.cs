@@ -2,7 +2,7 @@
 
 namespace Asteroids.Game.Storage
 {
-	public interface IEntitiesStorage
+	public interface IEntityStorage
 	{
 		void Add(IEntity entity);
 

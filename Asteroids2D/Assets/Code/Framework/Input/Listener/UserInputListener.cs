@@ -12,7 +12,7 @@ namespace Asteroids.Framework.Input.Listener
 		protected readonly List<H> Handlers;
 		protected readonly C ActionObject;
 
-		protected UserInputListener(UserInputActions userInputActions, C actionObject)
+		protected UserInputListener(C actionObject)
 		{
 			this.ActionObject = actionObject;
 

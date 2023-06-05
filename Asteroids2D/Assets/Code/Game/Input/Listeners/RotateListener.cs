@@ -10,7 +10,7 @@ namespace Asteroids.Game.Input.Listeners
 	public class RotateListener : UserInputListener<IRotateHandler, IRotatable>
 	{
 		public RotateListener(UserInputActions userInputActions, IRotatable rotatableObject)
-			: base(userInputActions, rotatableObject)
+			: base(rotatableObject)
 		{
 			userInputActions.Player.Rotate.performed += Performed;
 			userInputActions.Player.Rotate.canceled += Canceled;

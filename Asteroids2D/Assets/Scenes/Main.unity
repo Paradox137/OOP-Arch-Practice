@@ -375,4 +375,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067bbbd0474742a68e773c4a43564dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipTransform: {fileID: 1970532790}
+  shipGameObject: {fileID: 1970532789}

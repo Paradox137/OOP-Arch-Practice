@@ -8,20 +8,19 @@ using Object = UnityEngine.Object;
 namespace Asteroids.Game.Entities.Bullet
 {
 	public class Bullet : IBullet
-	{
+	{ 
 		public event Predicate<IPoolable> onNeedToPool;
 		public event Action<IEntity> onActivate;
 		public event Action<IEntity> onDeactivate;
+		public IMovable MoveComponent { get; set; }
+		public GameObject GameObjectRef { get; set; }
+		public bool IsAlive { get; private set; }
+		
+		//public IEntityProvider Provider { get; }
 		public void Activate(IEntitiesSpawner spawner)
 		{
 			
 		}
-
-		public IMovable MoveComponent { get; }
-		//public IEntityProvider Provider { get; }
-		public bool IsAlive { get; private set; }
-		public GameObject GameObjectRef { get; set; }
-		
 		public void Activate()
 		{
 			

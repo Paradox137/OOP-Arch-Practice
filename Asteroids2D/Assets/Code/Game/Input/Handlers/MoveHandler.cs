@@ -2,26 +2,32 @@
 using System.Threading;
 using Asteroids.Framework.Entities.ContractsComponent;
 using Asteroids.Framework.Input.Contracts;
+using Asteroids.Framework.Service.Contracts;
 using UnityEngine.InputSystem;
 
 namespace Asteroids.Game.Input.Handlers
 {
+	public delegate void UserMoveEventHandler(IAcceleratable movableObject, CancellationToken token, MoveState moveState);
 	public class MoveHandler : IMoveHandler
 	{	
-		CancellationTokenSource cancellationTokenSource;
-		
-		public event Action<IAcceleratable, CancellationToken, MoveState> Moved;
+		private CancellationTokenSource cancellationTokenSource;
 
-		public MoveHandler(IUserInputListener<IMoveHandler> moveListener)
+		private UserMoveEventHandler onMoved;
+		
+		public MoveHandler(IUserInputListener<IMoveHandler> moveListener, UserMoveEventHandler moveFunc)
 		{
 			moveListener.Add(this);
-		}
 
+			onMoved = moveFunc;
+		}
+		
 		~MoveHandler()
 		{
 			cancellationTokenSource.Dispose();
+			
+			onMoved = null;
 		}
-		
+
 		public void Handle(IAcceleratable movableObject, InputAction.CallbackContext context)
 		{
 			cancellationTokenSource?.Cancel();
@@ -30,11 +36,11 @@ namespace Asteroids.Game.Input.Handlers
 			
 			if (context.performed)
 			{
-				Moved?.Invoke(movableObject, cancellationTokenSource.Token, MoveState.Moving);
+				onMoved?.Invoke(movableObject, cancellationTokenSource.Token, MoveState.Moving);
 			}
 			else if (context.canceled)
 			{
-				Moved?.Invoke(movableObject, cancellationTokenSource.Token, MoveState.Stop);
+				onMoved?.Invoke(movableObject, cancellationTokenSource.Token, MoveState.Stop);
 			}
 		}
 	}

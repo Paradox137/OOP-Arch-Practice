@@ -7,47 +7,43 @@ using Object = UnityEngine.Object;
 
 namespace Asteroids.Game.Factory
 {
-	public class EntitiesFactory<S, E> 
+	public abstract class EntitiesFactory<S, E> : IEntitiesFactory
 		where E : IEntity, IPoolable, new()
 		where S : IEntitiesSpawner
 	{
 		private IEntityPool entityPool;
-		private IEntitiesStorage entityStorage;
-		private S spawner;
+		private IEntityStorage entityStorage;
+		protected S spawner;
+		readonly int _horse;
+		protected uint counter;
 
-		private uint counter;
-		
-		public EntitiesFactory(IEntityPool entityPool, IEntitiesStorage entityStorage)
+		protected EntitiesFactory(IEntityPool entityPool, IEntityStorage entityStorage, S spawner)
 		{
 			counter = 0;
-			
+
 			this.entityPool = entityPool;
 			this.entityStorage = entityStorage;
+			this.spawner = spawner;
 		}
-
-		public void TrySpawnEntity(GameObject gameObject) 
+		public void TrySpawnEntity(GameObject gameObject)
 		{
 			if (spawner.isReady)
 			{
 				IPoolable poolEntity = entityPool.TryGetEntity();
-				
+
 				if (poolEntity != null)
 					poolEntity.Activate(spawner);
 				else
-				{
-					GameObject gameObjectRef = Object.Instantiate(gameObject, spawner.GetSpawnPosition(), spawner.GetRotation());
-					gameObjectRef.name = nameof(E) + " " + (++counter);
-
-					E entity = new E { GameObjectRef = gameObjectRef };
-					
-					SubscribeEntity(ref entity);
-					entity.Init();
-				}
+					SpawnEntity();
 			}
+		}
+
+		public virtual void SpawnEntity()
+		{
 			
 		}
 
-		private void SubscribeEntity(ref E entity)
+		protected void SubscribeEntity(ref E entity)
 		{
 			entity.onNeedToPool += entityPool.TryAddEntity;
 			entity.onActivate += entityStorage.Add;

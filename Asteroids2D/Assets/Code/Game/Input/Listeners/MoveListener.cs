@@ -2,6 +2,7 @@
 using Asteroids.Framework.Input;
 using Asteroids.Framework.Input.Contracts;
 using Asteroids.Framework.Input.Listener;
+using Asteroids.Framework.Service.Contracts;
 using UnityEngine.InputSystem;
 
 namespace Asteroids.Game.Input.Listeners
@@ -9,7 +10,7 @@ namespace Asteroids.Game.Input.Listeners
 	public class MoveListener : UserInputListener<IMoveHandler, IAcceleratable>
 	{
 		public MoveListener(UserInputActions userInputActions, IAcceleratable movableObject)
-			: base(userInputActions, movableObject)
+			: base(movableObject)
 		{
 			userInputActions.Player.Move.performed += Performed;
 			userInputActions.Player.Move.canceled += Canceled;

@@ -3,25 +3,31 @@ using System.Threading;
 using Asteroids.Framework.Entities.ContractsComponent;
 using Asteroids.Framework.Input.Contracts;
 using Asteroids.Framework.Service;
+using Asteroids.Game.Services;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Asteroids.Game.Input.Handlers
 {
+	public delegate void UserRotationHandler(IRotatable rotatable, Vector3 direction, CancellationToken token);
 	public class RotateHandler : IRotateHandler
 	{
-		CancellationTokenSource cancellationTokenSource;
-		
-		public event Action<IRotatable,Vector3, CancellationToken> Rotated;
+		private CancellationTokenSource cancellationTokenSource;
 
-		public RotateHandler(IUserInputListener<IRotateHandler> rotateListener)
+		private UserRotationHandler onRotated;
+
+		public RotateHandler(IUserInputListener<IRotateHandler> rotateListener, UserRotationHandler rotateFunc)
 		{
 			rotateListener.Add(this);
+
+			onRotated = rotateFunc;
 		}
 
 		~RotateHandler()
 		{
 			cancellationTokenSource.Dispose();
+			
+			onRotated = null;
 		}
 
 		public void Handle(IRotatable rotatableObject, Vector3 direction, InputAction.CallbackContext context)
@@ -31,7 +37,7 @@ namespace Asteroids.Game.Input.Handlers
 			if (context.performed)
 			{
 				cancellationTokenSource = new CancellationTokenSource();
-				Rotated?.Invoke(rotatableObject, direction, cancellationTokenSource.Token);
+				onRotated?.Invoke(rotatableObject, direction, cancellationTokenSource.Token);
 			}
 		}
 	}

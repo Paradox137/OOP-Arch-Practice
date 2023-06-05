@@ -5,23 +5,23 @@ namespace Asteroids.Framework.Entities.Components
 {
 	public struct AccelerationComponent : IAcceleratable
 	{
-		private readonly Transform transform;
-		public Vector3 CurrentPosition { get => transform.localPosition; private set => transform.localPosition = value; }
+		private readonly Transform _transform;
+		public Vector3 CurrentPosition { get => _transform.localPosition; private set => _transform.localPosition = value; }
 		public float MoveSpeed { get; }
 		public float AccelerationRatio { get; }
 		public float SlowdownRatio { get; }
-		
+
 		public AccelerationComponent(Transform transform, float moveSpeed, float accelerationRatio, float slowdownRatio)
 		{
-			this.transform = transform;
-			
+			this._transform = transform;
+
 			MoveSpeed = moveSpeed;
 			AccelerationRatio = accelerationRatio;
 			SlowdownRatio = slowdownRatio;
 		}
 		public void SetPosition(Vector3 direction)
 		{
-			CurrentPosition += transform.TransformDirection(direction);
+			CurrentPosition += _transform.TransformDirection(direction);
 		}
 	}
 }

@@ -16,7 +16,6 @@ namespace Asteroids.Game.Services
 		private float currentAccelerationRatio;
 		
 		public event Action Begin;
-
 		public event Action<Vector3> End;
 
 		public async void MoveWithAcceleration<T>(T movableObject, CancellationToken cancellationToken, MoveState moveState)

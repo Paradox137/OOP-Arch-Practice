@@ -7,9 +7,8 @@ namespace Asteroids.Framework.Entities.Components
 {
 	public struct CooldownComponent : ICooldownable
 	{
-		public readonly float TimeToWait { get;}
+		public readonly float TimeToWait { get; }
 		public float TimeSpend { get; private set; }
-		
 		public event Action onTimerEnd;
 
 		public CooldownComponent(float timeToWait)
@@ -18,13 +17,13 @@ namespace Asteroids.Framework.Entities.Components
 			this.TimeToWait = timeToWait;
 			onTimerEnd = null;
 		}
-		
+
 		public async void StartTimer()
 		{
 			TimeSpend = 0f;
-			
+
 			await TimerTickPerDeltaTime();
-			
+
 			onTimerEnd?.Invoke();
 		}
 

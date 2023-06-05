@@ -3,11 +3,11 @@ using Asteroids.Framework.Entities.ContractsEntity;
 
 namespace Asteroids.Game.Storage
 {
-	public class EntitiesStorage : IEntitiesStorage
+	public class EntityStorage : IEntityStorage
 	{
 		private List<IEntity> activeEntities;
 		
-		public EntitiesStorage()
+		public EntityStorage()
 		{
 			activeEntities = new List<IEntity>();
 		}
